@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validação de Formulário</title>
+	<style>
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+
+		input {
+			margin-bottom: 20px;
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 200px;
+			text-align: center;
+		}
+
+		button {
+			padding: 10px;
+			font-size: 16px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.valid {
+			color: green;
+		}
+
+		.invalid {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<label for="campoA">Campo A:</label>
+		<input type="number" id="campoA" name="campoA" required>
+
+		<label for="campoB">Campo B:</label>
+		<input type="number" id="campoB" name="campoB" required>
+
+		<button type="submit" id="submit-btn">Enviar</button>
+	</form>
+
+	<div id="resultado"></div>
+
+	<script>
+		const form = document.querySelector('form');
+		const resultado = document.getElementById('resultado');
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const campoA = parseInt(document.getElementById('campoA').value);
+			const campoB = parseInt(document.getElementById('campoB').value);
+
+			if (campoB > campoA) {
+				resultado.innerHTML = '<p class="valid">Formulário válido!</p>';
+			} else {
+				resultado.innerHTML = '<p class="invalid">Formulário inválido!</p>';
+			}
+		});
+	</script>
+</body>
+</html>
